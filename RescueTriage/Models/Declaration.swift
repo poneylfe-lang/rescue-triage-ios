@@ -69,7 +69,7 @@ enum RejectReason: String, Codable, CaseIterable, Identifiable {
 
 /// What the supplier claims about the goods. Everything here is assertion, not
 /// fact — checking it against the photo is the whole point of the app.
-struct SupplierDeclaration: Codable, Identifiable, Equatable {
+struct SupplierDeclaration: Codable, Identifiable, Hashable {
     var id: UUID = UUID()
     var supplier: String
     var productName: String
