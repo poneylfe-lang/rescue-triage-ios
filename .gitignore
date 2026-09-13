@@ -1,0 +1,32 @@
+# ---- Secrets. Never commit. -------------------------------------------------
+# The Gemini API key lives in the iOS Keychain, entered once in the app's
+# Settings screen. Nothing below should ever exist in this repo, but if one of
+# these files is ever created by accident, git will refuse to stage it.
+.env
+.env.*
+*.apikey
+Secrets.swift
+Secrets.plist
+GoogleService-Info.plist
+**/APIKeys.swift
+
+# ---- Xcode ------------------------------------------------------------------
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+DerivedData/
+build/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# ---- Swift Package Manager --------------------------------------------------
+.build/
+.swiftpm/
+Package.resolved
+
+# ---- macOS ------------------------------------------------------------------
+.DS_Store
