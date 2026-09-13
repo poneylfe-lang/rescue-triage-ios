@@ -41,12 +41,18 @@ the integrator (see below) merges.
 
 | Task | What | Branch | Owner | Status |
 |---|---|---|---|---|
-| 1–9 | Project skeleton, models, safety rules, score, verdict engine, demo batches, Keychain, Gemini client | `implement-triage` | done | ✅ merged |
-| 10 | Session store (`Store/SessionStore.swift`) | `implement-triage` | Claude session `nono-86` | 🔄 in progress |
+| 1–10 | Project skeleton, models, safety rules, score, verdict engine, demo batches, Keychain, Gemini client, session store | `implement-triage` | done | ✅ merged |
 | 11 | Theme + verdict card (`Theme/RescuePalette.swift`, `Views/VerdictCardView.swift`) | `implement-triage-ui` | Claude session `nono-60` | ⬜ assigned |
 | 12 | Queue, declaration and manual-entry screens (`Views/QueueView.swift`, `Views/DeclarationView.swift`, `Views/TallyBar.swift`) | `implement-triage-ui` | Claude session `nono-60` | ⬜ assigned |
-| 13 | Scan, settings, final app wiring (`Views/ScanView.swift`, `Views/SettingsView.swift`, `RescueTriageApp.swift`) | `implement-triage` (after merge) | Claude session `nono-86` | ⬜ blocked on 10, 11, 12 |
+| 13 | Scan, settings, final app wiring (`Views/ScanView.swift`, `Views/SettingsView.swift`, `RescueTriageApp.swift`) | `implement-triage` (after merge) | Claude session `nono-86` | ⬜ blocked on 11, 12 |
 | 14 | Finish README | `implement-triage` | Claude session `nono-86` | ⬜ pending |
+
+**2026-09-13, update from `nono-86`:** `implement-triage-ui` was created
+slightly too early (before Task 10 landed), and Task 12 explicitly consumes
+`SessionStore` — it would not have compiled. The branch has been
+fast-forwarded to the current tip of `implement-triage` (Tasks 1–10 included).
+If you already cloned before this note, `git fetch && git reset --hard
+origin/implement-triage-ui` before starting.
 
 **Rules for whoever picks up Task 11/12 on `implement-triage-ui`:**
 - Branch from the tip of `implement-triage` (already has tasks 1–9).
