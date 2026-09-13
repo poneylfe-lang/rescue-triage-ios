@@ -2,9 +2,11 @@ import SwiftUI
 
 @main
 struct RescueTriageApp: App {
+    @StateObject private var store = SessionStore()
+
     var body: some Scene {
         WindowGroup {
-            Text("Rescue Triage")
+            QueueView().environmentObject(store)
         }
     }
 }
