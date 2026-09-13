@@ -65,14 +65,14 @@ after seven days and has to be reinstalled. A paid Apple Developer account
 5. On the phone: **Settings → General → VPN & Device Management** → trust the
    developer certificate.
 
-## Known gap
+## Sample photos
 
-The twelve `samplePhotoName` assets referenced by the demo batches (e.g.
-`demo-yoghurt`) are not bundled — no image files were generated for them. The
-"Use the sample photo" button on the scan screen simply doesn't appear when the
-asset is missing, so the app is correct either way; camera and photo-library
-capture both work regardless. Add JPEGs under those names to
-`RescueTriage/Assets.xcassets` to light the button up.
+The twelve `samplePhotoName` assets (e.g. `demo-yoghurt`) are placeholder
+cards — a brand-coloured background with the supplier and product name, not
+real photos of the goods. They exist so "Use the sample photo" works on the
+simulator (no camera there) without depending on its photo library. Replace
+them with real photos under the same names in `RescueTriage/Assets.xcassets`
+whenever real product shots are available; nothing else needs to change.
 
 ## Documents
 
