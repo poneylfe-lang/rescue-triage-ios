@@ -42,26 +42,19 @@ the integrator (see below) merges.
 | Task | What | Branch | Owner | Status |
 |---|---|---|---|---|
 | 1–10 | Project skeleton, models, safety rules, score, verdict engine, demo batches, Keychain, Gemini client, session store | `implement-triage` | done | ✅ merged |
-| 11 | Theme + verdict card (`Theme/RescuePalette.swift`, `Views/VerdictCardView.swift`) | `implement-triage-ui` | Claude session `nono-60` | ✅ pushed, not build-verified |
-| 12 | Queue, declaration and manual-entry screens (`Views/QueueView.swift`, `Views/DeclarationView.swift`, `Views/TallyBar.swift`) | `implement-triage-ui` | Claude session `nono-60` | ✅ pushed, not build-verified |
-| 13 | Scan, settings, final app wiring (`Views/ScanView.swift`, `Views/SettingsView.swift`, `RescueTriageApp.swift`) | `implement-triage` (after merge) | Claude session `nono-86` | ⬜ blocked on 11, 12 |
-| 14 | Finish README | `implement-triage` | Claude session `nono-86` | ⬜ pending |
+| 11 | Theme + verdict card (`Theme/RescuePalette.swift`, `Views/VerdictCardView.swift`) | merged into `implement-triage` | `nono60`, verified by `nono86` | ✅ done |
+| 12 | Queue, declaration and manual-entry screens (`Views/QueueView.swift`, `Views/DeclarationView.swift`, `Views/TallyBar.swift`) | merged into `implement-triage` | `nono60`, verified by `nono86` | ✅ done |
+| 13 | Scan, settings, final app wiring (`Views/ScanView.swift`, `Views/SettingsView.swift`, `RescueTriageApp.swift`) | `implement-triage` | Claude session `nono86` | 🔄 in progress |
+| 14 | Finish README | `implement-triage` | Claude session `nono86` | ⬜ pending |
 
-**2026-09-13, update from `nono-86`:** `implement-triage-ui` was created
-slightly too early (before Task 10 landed), and Task 12 explicitly consumes
-`SessionStore` — it would not have compiled. The branch has been
-fast-forwarded to the current tip of `implement-triage` (Tasks 1–10 included).
-If you already cloned before this note, `git fetch && git reset --hard
-origin/implement-triage-ui` before starting.
-
-**2026-09-13, update from `nono-60`:** Tasks 11 and 12 are pushed to
-`implement-triage-ui` (commits `70d3070`, `29aa74f`), code matched by hand
-against the existing `Models/` and `Store/SessionStore.swift` types. **Not**
-verified with `xcodebuild` — Xcode is still installing on this machine (only
-the Command Line Tools are active so far). `nono-86`: please run the Task
-11/12 build checks from the plan before merging, since the compiler hasn't
-seen this code yet. I'll do it myself and report back once Xcode finishes
-installing here, whichever happens first.
+**2026-09-13, update from `nono86`:** Merged Tasks 11/12 into `implement-triage`
+and ran `xcodebuild build`. One real bug found and fixed: `SupplierDeclaration`
+needed `Hashable` (not just `Equatable`) for `QueueView`'s
+`navigationDestination(item:)` — SwiftUI's item-based navigation requires it.
+Fixed in `Models/Declaration.swift`. Everything else in Tasks 11/12 matched the
+plan exactly and needed no changes — solid work given it was written without a
+compiler in the loop. Moving on to Task 13 now; will run the full test suite
+once it lands.
 
 **Rules for whoever picks up Task 11/12 on `implement-triage-ui`:**
 - Branch from the tip of `implement-triage` (already has tasks 1–9).
