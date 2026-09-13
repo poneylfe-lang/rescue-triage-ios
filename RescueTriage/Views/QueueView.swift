@@ -1,5 +1,15 @@
 import SwiftUI
 
+/// `navigationDestination(item:)` below needs `Hashable`, which `SupplierDeclaration`
+/// (Models/Declaration.swift) doesn't declare. Added here, not there, to avoid
+/// touching a file outside this task's boundary — `id` alone is a valid witness
+/// since the struct's synthesized `==` already includes it.
+extension SupplierDeclaration: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 struct QueueView: View {
     @EnvironmentObject private var store: SessionStore
     @State private var selected: SupplierDeclaration?
